@@ -18,7 +18,7 @@ You will also need to update the `install.yml` file to include your SSH-key.
     - 'ssh-rsa example-key'
 ```
 
-## Steps
+## Outline of steps
 The deployment example will do the following
 
 ### Terraform
@@ -31,8 +31,40 @@ Terraform will be used to:
 Ansible will be used to:
  - Update the base operating system
  - Mount the File storage share to `/git-data`
- - Install Certbot and generate a Let's Encrypt Certificate (set up to autorenew by default)
- - Install and configure [Gitlab]()
+ - Install Certbot and generate a [Let's Encrypt Certificate](https://letsencrypt.org/) (set up to autorenew by default)
+ - Install and configure [Gitlab](https://about.gitlab.com/stages-devops-lifecycle/)
  - Secure Gitlab with the Let's Encrypt Certificate
  
- 
+## Deploying Gitlab
+**Grab example repo**
+Clone this example repo to your local system
+
+```
+git clone https://github.com/cloud-design-dev/gitlab-tf-ibm.git
+cd gitlab-tf-ibm
+```
+
+**Configure credentials.tfvars file for authentication with IBM Cloud**
+Copy the example `credentials.tfvars.tpl` to `credentials.tfvars` and then update `credentials.tfvars` with the appropriate IBM Cloud and SL API information. 
+
+```
+cp credentials.tfvars.tpl credentials.tfvars
+nano/vi credentials.tfvars
+```
+
+**Initialize Terraform** 
+```
+terraform init 
+```
+
+**Plan deployment and save to file**
+
+```
+terraform plan -var-file='./credentials.tfvars` -out gitlab.tfplan
+```
+
+**Apply deployment plan** 
+
+```
+terraform apply gitlab.tfplan
+```
