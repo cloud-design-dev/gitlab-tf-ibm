@@ -53,16 +53,13 @@ resource "ibm_compute_vm_instance" "gitlab" {
   ]
   }
 
-
-resource "ibm_cis_dns_record" "git_record" {
-  cis_id = "${data.ibm_cis.cis_instance.id}"
-  domain_id = "${data.ibm_cis_domain.cis_instance_domain.id}"
-  name   = "git"
-  content  = "${ibm_compute_vm_instance.gitlab.ipv4_address}"
-  type   = "A"
-}
-
-
+# resource "dnsimple_record" "gitlab_record" {
+#   domain = "${var.domain}"
+#   name   = "git"
+#   value  = "${ibm_compute_vm_instance.gitlab.ipv4_address}"
+#   type   = "A"
+#   ttl    = 300
+# }
 
 resource "local_file" "fqdn_rendered" {
   content = <<EOF
