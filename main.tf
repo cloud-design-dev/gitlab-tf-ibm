@@ -49,7 +49,7 @@ resource "ibm_compute_vm_instance" "gitlab" {
   file_storage_ids     = ["${ibm_storage_file.gitlab_storage.id}"]
 
   tags = [
-    "ryantiffany",
+    "gitlab",
   ]
   }
 
