@@ -1,0 +1,17 @@
+#cloud-config
+apt_update: true
+apt_upgrade: true
+users:
+  - name: deployer
+    groups: [ sudo ]
+    sudo: [ "ALL=(ALL) NOPASSWD:ALL" ]
+    shell: /bin/bash
+    ssh-authorized-keys:
+    - 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC4lY4YcpVi2KaH2xMzXCRbJ0S/PztQMlUHoCKTIjWEybREpfntD0hhaaKIUw8UUR4324mA5JVpBzlGyMusKFlVmbaMjkfNZpUyqR4OW4zcTEXXnowbD6FZpfMejPJl9WLD5Pmt88TM4NfqOhsqmInXj3X6iBpBdZ94bWLfFrNOYNqCInL3t91Ks3DHbD8MbwMJ4itPb6m3RAEkvVc1ImEo9NVpMKuSbyjbiQTuDHsLajCGOI6tf4IgZw2MIq9QnfklhxHfswTfjpN3hVhJgAtSwjbicXzn0gKGoxQvqK0mLtzMMe0/12pspT7b7Pwg6Boygat1PS1CryHJmCfdy0xf ryan@Ryans-MacBook-Pro.local'
+packages:
+    - python
+    - python-apt
+    - python3-apt
+    - nfs-common
+final_message: "The system is finally up, after $UPTIME seconds"
+output: {all: '| tee -a /var/log/cloud-init-output.log'}
