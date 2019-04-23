@@ -14,5 +14,9 @@ variable email {
 }
 ```
 
+You will also need to update the `install.yml` file to include your SSH-key. 
 
+```
+
+```
 
