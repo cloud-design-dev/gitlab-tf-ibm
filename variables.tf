@@ -3,16 +3,6 @@ variable ibm_bx_api_key {
   default = ""
 }
 
-variable dnsimple_token {
-  type    = "string"
-  default = ""
-}
-
-variable dnsimple_account {
-  type    = "string"
-  default = ""
-}
-
 variable ibm_sl_username {
   type    = "string"
   default = ""
