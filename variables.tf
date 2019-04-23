@@ -26,10 +26,6 @@ variable datacenter {
   }
 }
 
-variable node_count {
-  default = "1"
-}
-
 variable os_reference_code {
   type = "map"
 
@@ -43,17 +39,15 @@ variable flavor_key_name {
   type = "map"
 
   default = {
-    micro  = "B1_1X2X100"
-    small  = "B1_2X4X100"
     medium = "B1_8X16X100"
     large  = "BL2_8X32X100"
   }
 }
 
 variable domain {
-  default = "cdetesting.com"
+  default = "example.com"
 }
 
 variable email {
-  default = "ryantiffany@fastmail.com"
+  default = "user@example.com"
 }
