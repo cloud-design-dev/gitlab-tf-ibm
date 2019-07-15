@@ -13,6 +13,16 @@ variable ibm_sl_api_key {
   default = ""
 }
 
+variable dnsimple_token {
+  type    = "string"
+  default = ""
+}
+
+variable dnsimple_account {
+  type    = "string"
+  default = ""
+}
+
 variable datacenter {
   type = "map"
 
@@ -30,8 +40,8 @@ variable os_reference_code {
   type = "map"
 
   default = {
-    u16   = "UBUNTU_16_64"
-    u18   = "UBUNTU_18_64"
+    u16 = "UBUNTU_16_64"
+    u18 = "UBUNTU_18_64"
   }
 }
 
@@ -45,9 +55,9 @@ variable flavor_key_name {
 }
 
 variable domain {
-  default = "cloudintrsvc.com"
+  default = "example.com"
 }
 
 variable email {
-  default = "ryantiffany@fastmail.com"
+  default = "user@example.com"
 }

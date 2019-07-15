@@ -2,10 +2,11 @@
 Deploy a Gitlab powered server secured by a Let's Encrypt SSL Cert using Terraform and Ansible.
 
 ## Prerequisites
- - An instance of the [IBM Cloud Internet Services](https://cloud.ibm.com/docs/infrastructure/cis?topic=cis-about-ibm-cloud-internet-services-cis#about-ibm-cloud-internet-services)
- - The resource group for where your CIS instance is deployed. 
+ - A domain hosted at [DNSimple](https://dnsimple.com). 
  - Terraform and Ansible installed locally.
  - The SSH key of the server you are running this example on. 
+
+> Note: If you use a different DNS hosting service you can check the [Terraform Providers](https://www.terraform.io/docs/providers/index.html) to see if they are supported. You will need to update the `variables.tf`, `main.tf`, and `providers.tf` files accordingly.
 
 ## Initial Configuration
 In order to properly configure the environment to run you will want to update the following values in `variables.tf`:
@@ -36,6 +37,7 @@ Ansible will be used to:
  - Install Certbot and generate a [Let's Encrypt Certificate](https://letsencrypt.org/) (set up to autorenew by default)
  - Install and configure [Gitlab](https://about.gitlab.com/stages-devops-lifecycle/)
  - Secure Gitlab with the Let's Encrypt Certificate
+ - Install Docker for use as a Gitlab Runner 
  
 ## Deploying Gitlab using Terraform
 **Grab example repo**

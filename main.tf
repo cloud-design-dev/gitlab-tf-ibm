@@ -33,7 +33,6 @@ EOF
   filename = "${path.cwd}/Playbooks/nfs.yml"
 }
 
-
 resource "ibm_compute_vm_instance" "gitlab" {
   hostname             = "gitlab"
   domain               = "${var.domain}"
@@ -44,22 +43,20 @@ resource "ibm_compute_vm_instance" "gitlab" {
   hourly_billing       = true
   private_network_only = false
   flavor_key_name      = "${var.flavor_key_name["large"]}"
-  local_disk           = true
-  ssh_key_ids          = ["${data.ibm_compute_ssh_key.deploymentKey.id}"]
   file_storage_ids     = ["${ibm_storage_file.gitlab_storage.id}"]
 
   tags = [
     "gitlab",
-    "ryantiffany"
+    "ryantiffany",
   ]
-  }
+}
 
-resource "ibm_cis_dns_record" "gitlab" {
-  cis_id = "${data.ibm_cis.cis_instance.id}"  
-  domain_id = "${data.ibm_cis_domain.cis_instance_domain.id}"
+resource "dnsimple_record" "gitlab_dns" {
+  domain = "${var.domain}"
   name   = "gitlab"
-  content  = "${ibm_compute_vm_instance.gitlab.ipv4_address}"
+  value  = "${ibm_compute_vm_instance.gitlab.ipv4_address}"
   type   = "A"
+  ttl    = 3600
 }
 
 resource "local_file" "fqdn_rendered" {
