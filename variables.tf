@@ -45,9 +45,9 @@ variable flavor_key_name {
 }
 
 variable domain {
-  default = "example.com"
+  default = "cloudintrsvc.com"
 }
 
 variable email {
-  default = "user@example.com"
+  default = "ryantiffany@fastmail.com"
 }

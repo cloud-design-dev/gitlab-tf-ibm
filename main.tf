@@ -35,7 +35,7 @@ EOF
 
 
 resource "ibm_compute_vm_instance" "gitlab" {
-  hostname             = "git"
+  hostname             = "gitlab"
   domain               = "${var.domain}"
   user_metadata        = "${file("${path.cwd}/install.yml")}"
   os_reference_code    = "${var.os_reference_code["u16"]}"
@@ -50,16 +50,17 @@ resource "ibm_compute_vm_instance" "gitlab" {
 
   tags = [
     "gitlab",
+    "ryantiffany"
   ]
   }
 
-# resource "dnsimple_record" "gitlab_record" {
-#   domain = "${var.domain}"
-#   name   = "git"
-#   value  = "${ibm_compute_vm_instance.gitlab.ipv4_address}"
-#   type   = "A"
-#   ttl    = 300
-# }
+resource "ibm_cis_dns_record" "gitlab" {
+  cis_id = "${data.ibm_cis.cis_instance.id}"  
+  domain_id = "${data.ibm_cis_domain.cis_instance_domain.id}"
+  name   = "gitlab"
+  content  = "${ibm_compute_vm_instance.gitlab.ipv4_address}"
+  type   = "A"
+}
 
 resource "local_file" "fqdn_rendered" {
   content = <<EOF

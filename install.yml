@@ -7,7 +7,7 @@ users:
     sudo: [ "ALL=(ALL) NOPASSWD:ALL" ]
     shell: /bin/bash
     ssh-authorized-keys:
-    - 'ssh-rsa example-key'
+    - 'ssh-rsa-example-key'
 packages:
     - python
     - python-apt

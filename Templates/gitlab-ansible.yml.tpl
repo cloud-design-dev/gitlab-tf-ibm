@@ -1,4 +1,4 @@
-- hosts: all:!control
+- hosts: instances
   become: true
   vars:
     gitlab_external_url: "https://${fqdn}/"
@@ -16,6 +16,7 @@
   roles:
     - { role: geerlingguy.certbot}
     - { role: geerlingguy.gitlab }
+    - { role: geerlingguy.docker } # For use with Gitlab runners
   # tasks:
   #   - name: Disable Sign-Up for gitlab
   #     shell: gitlab-rails runner 'ApplicationSetting.last.update_attributes(signup_enabled: false)'
