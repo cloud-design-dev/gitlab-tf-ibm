@@ -72,3 +72,9 @@ terraform plan -var-file='./credentials.tfvars` -out gitlab.tfplan
 ```
 terraform apply gitlab.tfplan
 ```
+
+## Run Ansible Playbooks 
+
+```
+ansible-playbook -i Playbooks/inventory.env Playbooks/deploy-environment.yml
+```
