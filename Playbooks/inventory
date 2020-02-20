@@ -1,0 +1,10 @@
+[instances]
+gitlab ansible_host=169.62.58.45 ansible_user=deployer
+
+[instances:vars]
+host_key_checking = False
+retry_files_enabled = False
+
+[local]
+control ansible_connection=local
+

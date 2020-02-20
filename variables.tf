@@ -1,30 +1,30 @@
-variable ibm_bx_api_key {
-  type    = "string"
+variable "ibm_bx_api_key" {
+  type    = string
   default = ""
 }
 
-variable ibm_sl_username {
-  type    = "string"
+variable "ibm_sl_username" {
+  type    = string
   default = ""
 }
 
-variable ibm_sl_api_key {
-  type    = "string"
+variable "ibm_sl_api_key" {
+  type    = string
   default = ""
 }
 
-variable dnsimple_token {
-  type    = "string"
+variable "dnsimple_token" {
+  type    = string
   default = ""
 }
 
-variable dnsimple_account {
-  type    = "string"
+variable "dnsimple_account" {
+  type    = string
   default = ""
 }
 
-variable datacenter {
-  type = "map"
+variable "datacenter" {
+  type = map(string)
 
   default = {
     us-east1  = "wdc04"
@@ -36,8 +36,8 @@ variable datacenter {
   }
 }
 
-variable os_reference_code {
-  type = "map"
+variable "os_reference_code" {
+  type = map(string)
 
   default = {
     u16 = "UBUNTU_16_64"
@@ -45,8 +45,8 @@ variable os_reference_code {
   }
 }
 
-variable flavor_key_name {
-  type = "map"
+variable "flavor_key_name" {
+  type = map(string)
 
   default = {
     medium = "B1_8X16X100"
@@ -54,10 +54,11 @@ variable flavor_key_name {
   }
 }
 
-variable domain {
-  default = "example.com"
+variable "domain" {
+  default = "cdetesting.com"
 }
 
-variable email {
-  default = "user@example.com"
+variable "email" {
+  default = "ryan@cloud-design.dev"
 }
+

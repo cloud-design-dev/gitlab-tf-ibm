@@ -1,10 +1,10 @@
-- hosts: all:!control
+- hosts: instances
   become: true
   tasks:
     - name: Mount File storage volume
       mount:
         path: /git-data
-        src: fsf-wdc0701c-fz.adn.networklayer.com:/SL02SEV78003_177/data01
+        src: fsf-wdc0701n-fz.adn.networklayer.com:/SL02SEV78003_704/data01
         fstype: nfs4
         state: mounted
         opts: "defaults,hard,intr"
